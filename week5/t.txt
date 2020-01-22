@@ -1,0 +1,3 @@
+/home/serge/Desktop/lections/python/bash, file system, regex
+bash_regex.ipynb
+t.txt
