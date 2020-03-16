@@ -1,3 +1,3 @@
 ## Обучающая тетрадка по нейронным сетям
-Материалы любезно предосталенны sergeyfitts<br>
+Материалы любезно предосталены [sergeyfitts](https://github.com/sergeyfitts)<br>
 telegram: @mr_fitts
