@@ -1,0 +1,65 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install python3-pip
+pip3 install --upgrade pip
+pip3 install jupyter 
+pip3 install jupyterlab
+pip3 install notebook
+sudo apt-get install python3-venv
+sudo apt install tmux
+#pip3 freeze >> req.txt
+python3 -m venv env
+source env/bin/activate
+pip install --upgrade pip
+#pip install -r req.txt
+python -m jupyterlab --generate-config
+
+jupyter notebook password
+
+#openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mycert.pem -out mycert.pem
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+nano /home/ubuntu/.jupyter/jupyter_notebook_config.py
+
+c = get_config()
+
+c.NotebookApp.certfile = u'/home/ubuntu/flask/mycert.pem'
+c.NotebookApp.keyfile = u'/home/ubuntu/flask/mykey.key'
+# Set ip to '*' to bind on all interfaces (ips) for the public server
+c.NotebookApp.ip = '0.0.0.0'
+c.NotebookApp.port = 8080
+c.NotebookApp.allow_origin = '*'
+#c.NotebookApp.password = u'sha1:bcd259ccf...<your hashed password here>'
+c.NotebookApp.open_browser = False
+
+c.NotebookApp.allow_remote_access = True
+
+
+jupyter lab
+##### tunel
+ssh -i "key_aws.pem" ubuntu@ec2-34-212-53-203.us-west-2.compute.amazonaws.com -L 9999:127.0.0.1:9999
+
+#### tmux 
+tmux new -t name
+tmux ls 
+tmux kill-session -t name
+tmux attach -t name
+### ports 
+
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw allow 8080
+sudo ufw allow 8045
+#### дуть на молоко ####
+sudo chown -hvR ubuntu /home/ubuntu
+
+#####################FLASK#####################
+
+#sudo apt-get install apache2
+pip install flask 
+
+export FLASK_APP=my_app4.py
+export FLASK_RUN_PORT=8080
+export FLASK_RUN_HOST=0.0.0.0
+
+##### do not forget about TCP ports! set it in aws######
